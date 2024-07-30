@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_link'])) {
                 $stmt->execute();
 
                 // Send the reset link via email
-                $resetLink = "http://142.3.24.34/update_password.php?token=$token&email=$email";
+                $resetLink = "https://142.3.24.34/update_password.php?token=$token&email=$email";
                 $subject = "Reset Your Password";
                 $message = "Click the link to reset your password: <a href='$resetLink'>$resetLink</a><br>The link will expire in 5 minutes.";
                 
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_link'])) {
                     $mail->Host = 'smtp.gmail.com';
                     $mail->SMTPAuth = true;
                     $mail->Username = 'feras.aljoudi@gmail.com';
-                    $mail->Password = '******************************';
+                    $mail->Password = '****************************';
                     $mail->SMTPSecure = 'tls';
                     $mail->Port = 587;
 
@@ -88,7 +88,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_link'])) {
 
 $conn->close();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -129,5 +128,3 @@ $conn->close();
     </div>
 </body>
 </html>
-
-

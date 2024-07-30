@@ -58,7 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
                             'At least one lowercase letter<br>' .
                             'At least one digit<br>' .
                             'At least one special character: @, $, !, %, *, ?, & or -<br>' .
-                            'Minimum length of 8 characters';
+                            'Minimum length of 8 characters<br>' .
+                            'No spaces';
     } elseif ($password !== $confirmPassword) {
         $registerError = 'Password and confirm password must match';
     } else {
@@ -158,7 +159,8 @@ $conn->close();
                                     "At least one lowercase letter<br>" +
                                     "At least one digit<br>" +
                                     "At least one special character: @, $, !, %, *, ?, & or -<br>" +
-                                    "Minimum length of 8 characters";
+                                    "Minimum length of 8 characters<br>" +
+                                    "No spaces";
                 return false;
             }
 
