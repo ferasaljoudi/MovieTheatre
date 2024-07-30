@@ -1,3 +1,3 @@
-# MovieTheatre
+# Aljoudi Movie Theatre
 
 In progress...
