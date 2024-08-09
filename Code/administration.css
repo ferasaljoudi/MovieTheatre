@@ -1,0 +1,210 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    min-height: 100vh;
+}
+
+.header {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(109, 151, 168);
+    color: white;
+    box-sizing: border-box;
+}
+
+.header .title-container {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    position: relative;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.burger-menu {
+    width: 60px;
+    height: 60px;
+    background-color: #3c773a;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+}
+
+.burger-menu-content {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(10px);
+}
+
+.burger-menu-content p {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+}
+
+.burger-menu-content .btn-movie-page {
+    padding: 10px;
+    background-color: rgb(128, 179, 198);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.burger-menu-content .btn-logout {
+    padding: 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.burger-menu-content .btn-movie-page:hover {
+    background-color: rgb(67, 106, 121);
+}
+
+.burger-menu-content .btn-logout:hover {
+    background-color: #b41e2d;
+}
+
+.container {
+    margin: 20px auto;
+    width: 90%;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.tableContainer {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    box-sizing: border-box;
+}
+
+.tableContainer th, .tableContainer td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+    word-wrap: break-word;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tableContainer th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.tableContainer tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.footer {
+    margin-top: auto;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.4); 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 400px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.btn-cancel {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.btn-delete:hover {
+    background-color: #b41e2d;
+}
+
+.btn-cancel:hover {
+    background-color: #5a6268;
+}
+
