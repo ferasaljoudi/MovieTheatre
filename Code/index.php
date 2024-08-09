@@ -31,7 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         $user = $result->fetch_assoc();
         if (password_verify($password, $user['password'])) {
             $_SESSION['user'] = $user['first_name'] . ' ' . $user['last_name'];
-            header('Location: welcome.php');
+            $_SESSION['user_email'] = $user['email'];
+            if ($user['verified'] !== 'yes') {
+                header('Location: verify_account.php');
+            } else {
+                header('Location: welcome.php');
+            }
             exit();
         } else {
             $loginError = 'Password does not match the account';

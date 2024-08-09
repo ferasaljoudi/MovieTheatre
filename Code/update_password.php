@@ -23,7 +23,7 @@ $success = '';
 
 // Validate token and email parameters
 if (!isset($_GET['token']) || !isset($_GET['email'])) {
-    header('Location: error_page.php'); // Redirect to an error page
+    header('Location: index.php'); // Redirect to an error page
     exit();
 }
 

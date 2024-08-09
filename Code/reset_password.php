@@ -20,7 +20,6 @@ if ($conn->connect_error) {
 }
 
 $conn->query("SET time_zone = '+08:00'");
-
 $error = '';
 $success = '';
 
@@ -36,36 +35,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_link'])) {
         if ($result->num_rows === 0) {
             $error = 'Account is not found';
         } else {
-            // Generate a unique token
             $token = bin2hex(random_bytes(50));
 
-            // Store the token and the time in the database with the email
             $sql = "UPDATE movieAccounts SET reset_token = ?, token_created_at = NOW() WHERE email = ?";
             if ($stmt = $conn->prepare($sql)) {
                 $stmt->bind_param('ss', $token, $email);
                 $stmt->execute();
 
-                // Send the reset link via email
                 $resetLink = "https://142.3.24.34/update_password.php?token=$token&email=$email";
                 $subject = "Reset Your Password";
                 $message = "Click the link to reset your password: <a href='$resetLink'>$resetLink</a><br>The link will expire in 5 minutes.";
                 
                 $mail = new PHPMailer(true);
                 try {
-                    //Server settings
+                    // // Server settings
+                    // $mail->isSMTP();
+                    // $mail->Host = 'smtp.gmail.com';
+                    // $mail->SMTPAuth = true;
+                    // $mail->Username = 'feras.aljoudi@gmail.com';
+                    // $mail->Password = '****************************';
+                    // $mail->SMTPSecure = 'tls';
+                    // $mail->Port = 587;
+                    
                     $mail->isSMTP();
-                    $mail->Host = 'smtp.gmail.com';
-                    $mail->SMTPAuth = true;
-                    $mail->Username = 'feras.aljoudi@gmail.com';
-                    $mail->Password = '****************************';
-                    $mail->SMTPSecure = 'tls';
-                    $mail->Port = 587;
+                    $mail->Host = 'mail.aljoudim.ursse.org';
+                    $mail->Port = 25;
+                    $mail->SMTPAuth = false;
 
-                    //Recipients
-                    $mail->setFrom('feras.aljoudi@gmail.com', 'Aljoudi Movie Posters');
+                    $mail->setFrom('no-reply@aljoudim.ursse.org', 'Aljoudi Movie Posters');
                     $mail->addAddress($email);
 
-                    // Content
                     $mail->isHTML(true);
                     $mail->Subject = $subject;
                     $mail->Body    = $message;
@@ -79,13 +78,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_link'])) {
                 $error = 'Error preparing SQL statement for updating token: ' . $conn->error;
             }
         }
-
         $stmt->close();
     } else {
         $error = 'Error preparing SQL statement for selecting email: ' . $conn->error;
     }
 }
-
 $conn->close();
 ?>
 
