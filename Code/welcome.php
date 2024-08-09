@@ -12,6 +12,7 @@ if (isset($_POST['logout'])) {
 }
 
 $user = $_SESSION['user'];
+$email = $_SESSION['user_email'];
 $nameParts = explode(' ', $user);
 $initials = strtoupper($nameParts[0][0] . $nameParts[1][0]);
 ?>
@@ -35,10 +36,40 @@ $initials = strtoupper($nameParts[0][0] . $nameParts[1][0]);
 
     <div class="burger-menu-content" id="burgerMenuContent">
         <p><?php echo htmlspecialchars($user); ?></p>
+
+        <?php if (strpos($email, 'admin@aljoudimovie.com') !== false): ?>
+            <form method="get" action="administration.php">
+                <button type="submit"
+                    style="
+                        padding: 10px;
+                        background-color: rgb(94, 165, 191);
+                        color: white;
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        width: 100%;
+                        font-size: 16px;
+                        margin-bottom: 10px;
+                    ">Administration</button>
+            </form>
+        <?php endif; ?>
+
         <form method="post" action="">
-            <button type="submit" name="logout">Logout</button>
+            <button type="submit" name="logout"
+                style="
+                    padding: 10px;
+                    background-color: #dc3545;
+                    color: white;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    width: 100%;
+                    font-size: 16px;
+                    margin-bottom: 10px;
+                ">Logout</button>
         </form>
     </div>
+
     <div class="movie-grid">
         <div class="movie-item">
             <img src="moviesImages/Ottman.jpg" alt="Ottman">
