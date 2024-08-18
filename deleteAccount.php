@@ -6,17 +6,20 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-$config = include('credentials.php');
-$servername = $config['servername'];
-$username = $config['username'];
-$password = $config['password'];
-$dbname = $config['dbname'];
+$credentials = include('credentials.php');
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli(
+    $credentials['servername'],
+    $credentials['username'],
+    $credentials['password'],
+    $credentials['dbname'],
+    $credentials['port']
+);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+echo "Connected successfully";
 
 $id = $_POST['id'];
 

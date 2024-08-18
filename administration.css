@@ -22,7 +22,7 @@ body {
     box-sizing: border-box;
 }
 
-.header .title-container {
+.header .titleContainer {
     display: flex;
     flex: 1;
     justify-content: center;
@@ -31,7 +31,7 @@ body {
     font-weight: 600;
 }
 
-.burger-menu {
+.burgerMenu {
     width: 60px;
     height: 60px;
     background-color: #3c773a;
@@ -44,27 +44,28 @@ body {
     color: white;
 }
 
-.burger-menu-content {
+.burgerMenuContent {
     display: none;
     position: absolute;
     top: 70px;
     right: 20px;
     background-color: white;
     border: 1px solid #ddd;
+    text-align: center;
     padding: 10px;
     border-radius: 4px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transform: translateY(10px);
 }
 
-.burger-menu-content p {
+.burgerMenuContent p {
     margin: 0 0 10px 0;
     font-size: 20px;
 }
 
-.burger-menu-content .btn-movie-page {
+.burgerMenuContent .menuBtns {
     padding: 10px;
-    background-color: rgb(128, 179, 198);
+    background-color: rgb(94, 165, 191);
     color: white;
     border: none;
     border-radius: 4px;
@@ -74,7 +75,7 @@ body {
     margin-bottom: 10px;
 }
 
-.burger-menu-content .btn-logout {
+.burgerMenuContent .logoutBtn {
     padding: 10px;
     background-color: #dc3545;
     color: white;
@@ -86,11 +87,11 @@ body {
     margin-bottom: 10px;
 }
 
-.burger-menu-content .btn-movie-page:hover {
+.burgerMenuContent .menuBtns:hover {
     background-color: rgb(67, 106, 121);
 }
 
-.burger-menu-content .btn-logout:hover {
+.burgerMenuContent .logoutBtn:hover {
     background-color: #b41e2d;
 }
 
@@ -144,37 +145,37 @@ body {
 }
 
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgba(0, 0, 0, 0.4); 
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal-content {
+.modalContent {
     background-color: #fefefe;
-    margin: 15% auto; 
+    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; 
+    width: 80%;
     max-width: 400px;
     border-radius: 8px;
     text-align: center;
 }
 
-.close-btn {
+.closeBtn {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close-btn:hover,
-.close-btn:focus {
+.closeBtn:hover,
+.closeBtn:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;

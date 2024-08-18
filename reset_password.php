@@ -6,14 +6,15 @@ use PHPMailer\PHPMailer\Exception;
 
 date_default_timezone_set('Asia/Shanghai');
 
-$config = include('credentials.php');
+$credentials = include('credentials.php');
 
-$servername = $config['servername'];
-$username = $config['username'];
-$password = $config['password'];
-$dbname = $config['dbname'];
-
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli(
+    $credentials['servername'],
+    $credentials['username'],
+    $credentials['password'],
+    $credentials['dbname'],
+    $credentials['port']
+);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -42,27 +43,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_link'])) {
                 $stmt->bind_param('ss', $token, $email);
                 $stmt->execute();
 
-                $resetLink = "https://142.3.24.34/update_password.php?token=$token&email=$email";
+                $resetLink = "https://movie-theatre.aljoudi.ca/update_password.php?token=$token&email=$email";
                 $subject = "Reset Your Password";
                 $message = "Click the link to reset your password: <a href='$resetLink'>$resetLink</a><br>The link will expire in 5 minutes.";
                 
                 $mail = new PHPMailer(true);
                 try {
-                    // // Server settings
-                    // $mail->isSMTP();
-                    // $mail->Host = 'smtp.gmail.com';
-                    // $mail->SMTPAuth = true;
-                    // $mail->Username = 'feras.aljoudi@gmail.com';
-                    // $mail->Password = '****************************';
-                    // $mail->SMTPSecure = 'tls';
-                    // $mail->Port = 587;
-                    
+                    // Server settings
                     $mail->isSMTP();
-                    $mail->Host = 'mail.aljoudim.ursse.org';
-                    $mail->Port = 25;
-                    $mail->SMTPAuth = false;
+                    $mail->Host = 'smtp.gmail.com';
+                    $mail->SMTPAuth = true;
+                    $mail->Username = 'feras.aljoudi@gmail.com';
+                    $mail->Password = '***********************';
+                    $mail->SMTPSecure = 'tls';
+                    $mail->Port = 587;
 
-                    $mail->setFrom('no-reply@aljoudim.ursse.org', 'Aljoudi Movie Posters');
+                    $mail->setFrom('no-reply@aljoudimovietheatre.org', 'Aljoudi Movie Theatre');
                     $mail->addAddress($email);
 
                     $mail->isHTML(true);

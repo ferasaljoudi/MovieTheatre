@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - TARGETARCH=arm64
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    platform: linux/arm64
+
+  db:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: ********
+      MYSQL_DATABASE: ********
+      MYSQL_USER: ********
+      MYSQL_PASSWORD: ********
+    ports:
+      - "90:90"
+    volumes:
+      - db_data:/var/lib/mysql
+    platform: linux/arm64
+
+volumes:
+  db_data:

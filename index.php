@@ -1,13 +1,14 @@
 <?php
 session_start();
-$config = include('credentials.php');
+$credentials = include('credentials.php');
 
-$servername = $config['servername'];
-$username = $config['username'];
-$password = $config['password'];
-$dbname = $config['dbname'];
-
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli(
+    $credentials['servername'],
+    $credentials['username'],
+    $credentials['password'],
+    $credentials['dbname'],
+    $credentials['port']
+);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -106,6 +107,19 @@ $conn->close();
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+<div class="poster-container">
+        <div class="poster"><img src="moviesImages/ArtOfLove.jpg" alt="Art of Love"></div>
+        <div class="poster"><img src="moviesImages/Aladdin.jpg" alt="Aladdin"></div>
+        <div class="poster"><img src="moviesImages/QuietPlace.jpg" alt="Quiet Place"></div>
+        <div class="poster"><img src="moviesImages/Prey.jpg" alt="Prey"></div>
+        <div class="poster"><img src="moviesImages/WhiteHouseDown.jpg" alt="White House Down"></div>
+        <div class="poster"><img src="moviesImages/BadBoys.jpg" alt="Bad Boys"></div>
+        <div class="poster"><img src="moviesImages/FastAndFurious.jpg" alt="Fast and Furious"></div>
+        <div class="poster"><img src="moviesImages/TheAvengers.jpg" alt="The Avengers"></div>
+        <div class="poster"><img src="moviesImages/Spiderman.jpg" alt="Spiderman"></div>
+        <div class="poster"><img src="moviesImages/Flash.jpg" alt="Flash"></div>
+    </div>
+
     <div class="page-container">
         <div class="header-title">
             <div class="header">Aljoudi Movie Theatre</div>

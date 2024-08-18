@@ -1,18 +1,18 @@
 <?php
 session_start();
 if (!isset($_SESSION['user'])) {
-    header('Location: index.php');
+    header('Location: /index.php');
     exit();
 }
 
-if (!isset($_SESSION['user_email']) || $_SESSION['user_email'] !== 'admin@aljoudimovie.com') {
-    header('Location: welcome.php');
+if ($_SESSION['user_email'] !== 'feras.aljoudi@gmail.com') {
+    header('Location: /welcome.php');
     exit();
 }
 
 if (isset($_POST['logout'])) {
     session_destroy();
-    header('Location: index.php');
+    header('Location: /index.php');
     exit();
 }
 
@@ -20,13 +20,15 @@ $user = $_SESSION['user'];
 $nameParts = explode(' ', $user);
 $initials = strtoupper($nameParts[0][0] . $nameParts[1][0]);
 
-$config = include('credentials.php');
-$servername = $config['servername'];
-$username = $config['username'];
-$password = $config['password'];
-$dbname = $config['dbname'];
+$credentials = include('credentials.php');
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli(
+    $credentials['servername'],
+    $credentials['username'],
+    $credentials['password'],
+    $credentials['dbname'],
+    $credentials['port']
+);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -47,21 +49,23 @@ $result = $conn->query($sql);
 </head>
 <body>
     <div class="header">
-        <div class="title-container">
+        <div class="titleContainer">
             <div class="title">Aljoudi Movie Theatre</div>
         </div>
-        <div class="burger-menu" id="burgerMenu"><?php echo $initials; ?></div>
+        <div class="burgerMenu" id="burgerMenu"><?php echo $initials; ?></div>
     </div>
 
-    <div class="burger-menu-content" id="burgerMenuContent">
+    <div class="burgerMenuContent" id="burgerMenuContent">
         <p><?php echo htmlspecialchars($user); ?></p>
 
-        <form method="get" action="welcome.php">
-            <button type="submit" class="btn-movie-page">Movie Page</button>
+        <form method="get" action="/welcome.php">
+            <button type="submit" class="menuBtns">Movie Page</button>
         </form>
-
+        <form method="get" action="/mySubscription.php">
+            <button type="submit" class="menuBtns">My Subscription</button>
+        </form>
         <form method="post" action="">
-            <button type="submit" name="logout" class="btn-logout">Logout</button>
+            <button type="submit" name="logout" class="logoutBtn">Logout</button>
         </form>
     </div>
 
@@ -211,7 +215,7 @@ $result = $conn->query($sql);
                 $('#deleteModal').fadeIn();
             });
 
-            $('.close-btn, #cancelDelete').on('click', function() {
+            $('.closeBtn, #cancelDelete').on('click', function() {
                 $('#deleteModal').fadeOut();
             });
 
@@ -232,8 +236,8 @@ $result = $conn->query($sql);
         });
     </script>
     <div id="deleteModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
+        <div class="modalContent">
+            <span class="closeBtn">&times;</span>
             <h2>Confirm Deletion</h2>
             <p>Are you sure you want to delete this account?</p>
             <button id="confirmDelete" class="btn-delete">Delete</button>

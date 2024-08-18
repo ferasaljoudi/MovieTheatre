@@ -1,29 +1,29 @@
 <?php
 session_start();
-$config = include('credentials.php');
 
 date_default_timezone_set('Asia/Shanghai');
 
-$servername = $config['servername'];
-$username = $config['username'];
-$password = $config['password'];
-$dbname = $config['dbname'];
+$credentials = include('credentials.php');
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli(
+    $credentials['servername'],
+    $credentials['username'],
+    $credentials['password'],
+    $credentials['dbname'],
+    $credentials['port']
+);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Set the MySQL session time zone to China Standard Time
 $conn->query("SET time_zone = '+08:00'");
 
 $error = '';
 $success = '';
 
-// Validate token and email parameters
 if (!isset($_GET['token']) || !isset($_GET['email'])) {
-    header('Location: index.php'); // Redirect to an error page
+    header('Location: index.php');
     exit();
 }
 
@@ -43,7 +43,7 @@ if ($stmt = $conn->prepare($sql)) {
         $token_creation_time = strtotime($user['token_created_at']);
         $current_time = time();
 
-        if (($current_time - $token_creation_time) > 300) { // 300 seconds = 5 minutes
+        if (($current_time - $token_creation_time) > 300) {
             $error = 'Link expired';
         }
     }
