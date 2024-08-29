@@ -1,5 +1,15 @@
-# Aljoudi Movie Theatre
+<div style="width: 100%;">
+    <a href="#"><img src="https://raw.githubusercontent.com/ferasaljoudi/AssetsRepository/main/SVGsHeader/AljoudiMovieTheatre.svg" alt="Aljoudi Movie Theatre" style="width: 100%"></a>
+</div>
+<br>
 
+<div align = "center">
+
+Developed a movie subscription platform with user authentication, movie details via API, and admin management capabilities.
+
+_<a href="https://movie-theatre.aljoudi.ca/" target="_blank" title="Aljoudi Movie Theatre">Aljoudi Movie Theatre</a>_
+
+</div>
 <br>
 <div style="width: 100%;">
     <a href="#"><img src="https://raw.githubusercontent.com/ferasaljoudi/AssetsRepository/main/BrownSVGs/overview.svg" alt="Overview" style="width: 100%"></a>
@@ -13,6 +23,5 @@ The "Movie Theatre" project is a dynamic web application built using Apache, PHP
     <a href="#"><img src="https://raw.githubusercontent.com/ferasaljoudi/AssetsRepository/main/BrownSVGs/technologiesUsed.svg" alt="Technologies Used" style="width: 100%"></a>
 </div>
 
-<!-- You can access the live version of the project at <a href="https://movie-theatre.aljoudi.ca/" target="_blank" title="Aljoudi Movie Theatre">Aljoudi Movie Theatre</a>. -->
 
 In progress...
