@@ -85,4 +85,15 @@ The "Movie Theatre" project is a dynamic web application built using Apache, PHP
 </table>
 </div>
 
-In progress...
+<br>
+<div style="width: 100%;">
+    <a href="#"><img src="https://raw.githubusercontent.com/ferasaljoudi/AssetsRepository/main/BrownSVGs/features.svg" alt="Features" style="width: 100%"></a>
+</div>
+
+- <b>User Authentication:</b> Secure login and registration system for user accounts.
+- <b>Movie Subscription:</b> Users can easily subscribe and unsubscribe to their favorite movies.
+- <b>Personalized Subscriptions:</b> View and manage subscribed movies on a dedicated subscription page.
+- <b>Movie Details & Trailers:</b> Access detailed movie information and trailers through TheMovieDB API integration.
+- <b>Admin Management:</b> Admins can view, edit, and manage user data via an admin dashboard.
+- <b>Responsive Design (Limited):</b> Optimized primarily for laptop screens, as this was developed for a small class assignment, with minimal support for other screen sizes.
+- <b>Dockerized Deployment:</b> Fully containerized and deployed on a Raspberry Pi 5.
