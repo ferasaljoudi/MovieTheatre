@@ -89,6 +89,7 @@ The "Movie Theatre" project is a dynamic web application built using Apache, PHP
 <div style="width: 100%;">
     <a href="#"><img src="https://raw.githubusercontent.com/ferasaljoudi/AssetsRepository/main/BrownSVGs/features.svg" alt="Features" style="width: 100%"></a>
 </div>
+<br>
 
 - <b>User Authentication:</b> Secure login and registration system for user accounts.
 - <b>Movie Subscription:</b> Users can easily subscribe and unsubscribe to their favorite movies.
